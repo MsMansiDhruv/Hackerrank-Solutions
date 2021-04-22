@@ -17,27 +17,36 @@ def generate_prime(lower, upper):
                 prime_list.append(num)  
     return prime_list
 
-def waiter(number, q):
+def waiter(numbers, q):
     pList = generate_prime(2, 10000)
-    A = number.copy()
+    A = []
     B = []
     temp = []
     answers = []
-    for i in range(0, q+1):
+    
+    prime_number = pList.pop(0)
+    while len(numbers) > 0:
+        number = numbers.pop(0)
+        if number%prime_number == 0:
+            answers.append(number)
+        else:
+            temp.append(number)
+    
+    A = temp.copy()         
+    for i in range(1, q):
         B = []
         temp = []
         prime_number = pList.pop(0)
         while len(A) > 0:
-            number = A.pop(0)
+            number = A.pop()
             if number%prime_number == 0:
-                B.append(number)
+                answers.append(number)
             else:
                 temp.append(number)
-        answers += B
-        temp.reverse()
         A = temp.copy()
-    answers += A    
-    return answers    
+    for val in A:
+        answers.append(val)  
+    return answers  
         
             
         
