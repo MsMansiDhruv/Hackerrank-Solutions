@@ -17,19 +17,20 @@ import sys
 
 def dynamicArray(n, queries):
     # Write your code here
-    last_answer = length = index = 0
-    int_array = []
-    seqList = [[] * (n-1) for i in range(n)]
-    for loop in range(0, len(queries)):
-        index = (int(queries[loop][1]) ^ int(last_answer)) % n
-        if queries[loop][0] == 1:
-            seqList[index].append(queries[loop][2])
-        elif queries[loop][0] == 2:
-            length = len(seqList[index])
-            index2 = queries[loop][2] % length
-            last_answer = seqList[index][index2]
-            int_array.append(last_answer)
-    return int_array
+    arr = [[] * (n) for i in range(n)]
+    lastAnswer = 0
+    ans = []
+    for a,x,y in queries:
+        idx = ((int(x)^lastAnswer)%n)
+        if int(a)==1:
+            #Run query 1
+            arr[idx].append(int(y))
+            print(arr[idx])
+        elif int(a)==2:
+            #Run query 2
+            lastAnswer = arr[idx][int(y)%len(arr[idx])]
+            ans.append(lastAnswer)
+    return ans
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
