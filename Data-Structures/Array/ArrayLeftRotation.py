@@ -15,13 +15,13 @@ if __name__ == '__main__':
 
     a = list(map(int, input().rstrip().split()))
 
-    #Pythonic hack
+    #Method 1: Pythonic hack. Complexity: O[k] k belongs to slice size for n input.
     """
     test_list = a[d:] + a[:d]  
     print(*test_list)  
     """
     
-    #Standard algorithm 
+    #Method 2: Standard algorithm using two for loops. Complexity: O(n)^2
     #Time limit exceeded
     """
     temp = None
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     
     """
     
-    #Using stack technique
+    #Method 3: Using stack technique using single for loop. Complexity: O(n)
     for i in range(d):
         top = a[0]
         a.remove(top)
