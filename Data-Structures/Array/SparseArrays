@@ -10,12 +10,14 @@ import sys
 def matchingStrings(strings, queries):
     
     #Method 1: Using 2 for loops. Complexity: O(nm), n=String length, m=Query length
+    """
     countQuery = [0]*len(queries)
     for query in range(len(queries)):
         for ele in strings:
             if queries[query] == ele:
                 countQuery[query]+=1
     return countQuery
+    """
 
     #Method 2: Using 1 for loop at a time. Complexity: O(n), n=String length
     dictQueries = {}
