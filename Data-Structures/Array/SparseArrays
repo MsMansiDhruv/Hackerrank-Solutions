@@ -8,15 +8,24 @@ import sys
 
 # Complete the matchingStrings function below.
 def matchingStrings(strings, queries):
-    count = 0
-    int_array = []
-    for q in queries:
-        count = 0
-        for s in strings:
-            if q == s:
-                count += 1
-        int_array.append(count)
-    return int_array
+    
+    #Method 1: Using 2 for loops. Complexity: O(nm), n=String length, m=Query length
+    countQuery = [0]*len(queries)
+    for query in range(len(queries)):
+        for ele in strings:
+            if queries[query] == ele:
+                countQuery[query]+=1
+    return countQuery
+
+    #Method 2: Using 1 for loop at a time. Complexity: O(n), n=String length
+    dictQueries = {}
+    for query in queries:
+        dictQueries[query] = 0 
+    for ele in strings:
+        if ele in dictQueries.keys():
+            dictQueries[ele]+=1
+    return dictQueries
+                
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
