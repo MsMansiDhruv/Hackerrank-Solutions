@@ -3,6 +3,7 @@ S = ""
 undoS = deque()
 n = int(input())
 
+#Time complexity: O(n), Space complexity: O(n)
 for i in range(n):
     line = input().split()
     
